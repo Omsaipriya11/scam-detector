@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamShield - Scam Message Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="brand">
+        <div class="logo">S</div>
+        <div>
+            <h1>ScamShield</h1>
+            <p>Smart Message Security</p>
+        </div>
+    </div>
+
+    <div class="security-status">
+        <span></span> Security Scanner Online
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <div>
+            <span class="eyebrow">MESSAGE THREAT ANALYZER</span>
+            <h2>Detect scams before<br><span>they detect you.</span></h2>
+            <p>
+                Paste a suspicious message and ScamShield will analyze
+                common warning signs, calculate a risk score, and explain
+                why the message may be dangerous.
+            </p>
+        </div>
+
+        <div class="shield-icon">🛡</div>
+    </section>
+
+    <section class="scanner-card">
+
+        <div class="section-title">
+            <div>
+                <h3>Analyze a Message</h3>
+                <p>Paste the message you received below.</p>
+            </div>
+
+            <span class="secure-badge">PRIVATE SCAN</span>
+        </div>
+
+        <textarea
+            id="messageInput"
+            placeholder="Example: Congratulations! You have won ₹50,000. Click here immediately to claim your prize..."
+        ></textarea>
+
+        <div class="input-footer">
+            <span id="charCount">0 characters</span>
+
+            <div>
+                <button class="sample-btn" id="sampleBtn">
+                    Load Sample
+                </button>
+
+                <button class="clear-btn" id="clearBtn">
+                    Clear
+                </button>
+
+                <button class="scan-btn" id="scanBtn">
+                    Scan Message →
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="resultSection" class="result-section hidden">
+
+        <div class="result-header">
+            <div>
+                <span class="eyebrow">SCAN RESULT</span>
+                <h3 id="resultTitle">Analysis Complete</h3>
+            </div>
+
+            <div id="riskBadge" class="risk-badge">
+                SAFE
+            </div>
+        </div>
+
+        <div class="score-area">
+
+            <div class="score-circle">
+                <div>
+                    <strong id="riskScore">0</strong>
+                    <span>/100</span>
+                </div>
+            </div>
+
+            <div class="score-info">
+                <h3 id="riskHeading">Low Risk</h3>
+                <p id="riskDescription">
+                    No major warning signs were detected.
+                </p>
+
+                <div class="risk-track">
+                    <div id="riskBar"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="analysis-grid">
+
+            <div class="analysis-card">
+                <div class="analysis-icon">⚠</div>
+                <div>
+                    <h4>Warning Signs</h4>
+                    <strong id="warningCount">0</strong>
+                    <p>signals detected</p>
+                </div>
+            </div>
+
+            <div class="analysis-card">
+                <div class="analysis-icon">🔗</div>
+                <div>
+                    <h4>Links</h4>
+                    <strong id="linkCount">0</strong>
+                    <p>links detected</p>
+                </div>
+            </div>
+
+            <div class="analysis-card">
+                <div class="analysis-icon">●</div>
+                <div>
+                    <h4>Urgency</h4>
+                    <strong id="urgencyStatus">Low</strong>
+                    <p>pressure level</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="warning-panel">
+
+            <div class="panel-heading">
+                <div>
+                    <h3>Detected Warning Signs</h3>
+                    <p>Reasons that influenced the risk score</p>
+                </div>
+            </div>
+
+            <div id="warningList"></div>
+
+        </div>
+
+        <div class="recommendation">
+
+            <div class="recommendation-icon">✓</div>
+
+            <div>
+                <h3>Safety Recommendation</h3>
+                <p id="recommendationText">
+                    Always verify suspicious messages through official channels.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="samples-section">
+
+        <div class="section-title">
+            <div>
+                <h3>Try Sample Messages</h3>
+                <p>Test the scanner with common message patterns.</p>
+            </div>
+        </div>
+
+        <div class="sample-grid">
+
+            <button class="sample-card" data-sample="scam">
+                <span class="sample-icon danger">!</span>
+                <div>
+                    <strong>Prize Scam</strong>
+                    <small>You've won a cash reward...</small>
+                </div>
+            </button>
+
+            <button class="sample-card" data-sample="bank">
+                <span class="sample-icon warning">₹</span>
+                <div>
+                    <strong>Bank Alert</strong>
+                    <small>Your account will be blocked...</small>
+                </div>
+            </button>
+
+            <button class="sample-card" data-sample="safe">
+                <span class="sample-icon safe">✓</span>
+                <div>
+                    <strong>Normal Message</strong>
+                    <small>Your appointment is confirmed...</small>
+                </div>
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="history-section">
+
+        <div class="section-title">
+            <div>
+                <h3>Recent Scans</h3>
+                <p>Your previous analysis results.</p>
+            </div>
+
+            <button class="clear-history" id="clearHistory">
+                Clear History
+            </button>
+        </div>
+
+        <div id="historyList" class="history-list">
+            <div class="empty-history">
+                No scans yet.
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>ScamShield • Stay alert. Stay protected.</p>
+        <small>
+            This tool provides educational risk indicators and is not a
+            replacement for official fraud or security services.
+        </small>
+    </footer>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
